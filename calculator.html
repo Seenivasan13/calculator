@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>My Calculator</title>
+		<title>Calculator Using Java Script</title>
 	</head>
     <style>
         body {
 	background-color: lightblack;
 }
-
 .calculator {
 	text-align: center;
 	margin: 0 auto;
 	padding: 200px;
 }
-
 .calculator-screen {
 	width: 100%;
 	height: 100px;
@@ -46,7 +43,6 @@ button {
 	width: 25%;
 	outline: none;
 }
-
 .all-clear,
 .equals {
 	width: 50%;
@@ -55,7 +51,6 @@ button {
 .equals {
 	background-color: orange;
 }
-
 button:hover {
 	background-color: darkgray;
 }
@@ -103,10 +98,6 @@ let prevNumber = "";
 let calculationOperator = "";
 let currentNumber = "0";
 let multioperator = 0;
-
-
-///sadasdadasdas
-// Menghitung angka
 const calculate = () => {
 	let result = "";
 	switch (calculationOperator) {
@@ -127,8 +118,6 @@ const calculate = () => {
 	currentNumber = result;
 	calculationOperator = "";
 };
-
-// Percantage
 const percantage = document.querySelector(".percent");
 percantage.addEventListener("click", () => {
 	if (prevNumber != "") {
@@ -138,14 +127,10 @@ percantage.addEventListener("click", () => {
 	}
 	updateScreen(currentNumber);
 });
-
-// Menampilkan Angka
 const calculatorScreen = document.querySelector(".calculator-screen");
 const updateScreen = (number) => {
 	calculatorScreen.value = number;
 };
-
-// Input Number
 const inputNumber = (number) => {
 	if (currentNumber === "0") {
 		currentNumber = number;
@@ -154,17 +139,12 @@ const inputNumber = (number) => {
 	currentNumber += number;
 	console.log(currentNumber);
 };
-
-// Operator Hasil
 const equalSign = document.querySelector(".equals");
 equalSign.addEventListener("click", (event) => {
 	console.log("Update " + currentNumber);
 	calculate();
-
 	updateScreen(currentNumber);
 });
-
-// Memasukan Operator
 const inputOperator = (operator) => {
 	if (calculationOperator === "") {
 		prevNumber = currentNumber;
@@ -182,22 +162,17 @@ operators.forEach((operator) => {
 		console.log(event.target.value);
 	});
 });
-
-// Decimal angka
 inputDecimal = (dot) => {
 	if (currentNumber.includes(dot)) {
 		return;
 	}
 	currentNumber += dot;
 };
-
 const decimalNumber = document.querySelector(".decimal");
 decimalNumber.addEventListener("click", (event) => {
 	inputDecimal(event.target.value);
 	updateScreen(currentNumber);
 });
-
-// Clear Button
 const clearAll = () => {
 	prevNumber = "";
 	calculationOperator = "";
@@ -205,17 +180,13 @@ const clearAll = () => {
 	multioperator = 0;
 };
 const clearButton = document.querySelector(".all-clear");
-
 clearButton.addEventListener("click", (event) => {
 	clearAll();
 	updateScreen(currentNumber);
 });
-
-// Mendapatkan angka
 const numbers = document.querySelectorAll(".number");
 numbers.forEach((number) => {
 	number.addEventListener("click", (event) => {
-		//console.log(event.target.value);
 		inputNumber(event.target.value);
 		updateScreen(currentNumber);
 	});
